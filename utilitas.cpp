@@ -526,7 +526,7 @@ void pattern1 (){
 }
 
 void pattern2(){
-	int loop1 = 200, loop2= 200, loop3 = 260, loop4 = 225;
+	int loop1 = 200, loop2= 200, loop3 = 260, loop4 = 390, loop5 = 110;
     while (loop1 > 100){
     
     	segitigaRotate(250, 195, loop1+100, 245, loop2, 245, 0,7);
@@ -540,13 +540,33 @@ void pattern2(){
     swapbuffers();
 	cleardevice();
 
-    while (loop3 > 150){
+    while (loop3 > 180){
     	segitigaRotate(250, 100, loop3+10, 130, loop3-30, 130, 0,7);
 		segitigaRotate(250, 100, loop3+10, 130, loop3-30, 130, 120,7);
 		segitigaRotate(250, 100, loop3+10, 130, loop3-30, 130, -120,7);    
         swapbuffers();
         loop3--;
-		loop4++;
+    }
+    swapbuffers();
+	cleardevice();
+    while (loop4 > 280){
+    	segitigaRotate(380, 400, loop4+10, 430, loop4-30, 430, 0,8);
+		segitigaRotate(380, 400, loop4+10, 430, loop4-30, 430, 120,8);
+		segitigaRotate(380, 400, loop4+10, 430, loop4-30, 430, -120,8);    
+        swapbuffers();
+        loop4--;
+
+    }
+    swapbuffers();
+    cleardevice();
+    
+        while (loop5 > 60){
+    	segitigaRotate(100, 400, loop5+10, 430, loop5-30, 430, 0,8);
+		segitigaRotate(100, 400, loop5+10, 430, loop5-30, 430, 120,8);
+		segitigaRotate(100, 400, loop5+10, 430, loop5-30, 430, -120,8);    
+        swapbuffers();
+        loop5--;
+
     }
     swapbuffers();
     cleardevice();
