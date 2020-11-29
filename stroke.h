@@ -27,9 +27,11 @@ typedef struct{
 //membuat garis
 void garis(titik A, titik B);
 void garis2(titik A, titik B);
+void garis3(int x1, int y1, int x2, int y2, int warna);
 void gantiwarna(int color);
 void gantigayagaris(int gayagaris, int pola, int ketebalan);
 void garisgaya(titik A, titik B, int type);
 void garistebal(titik A, titik B, int tebal);
 void gariswarna(titik A, titik B, int color);
 void makeline(int xmin, int ymin, int xmaks, int ymaks);
+

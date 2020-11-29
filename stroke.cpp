@@ -23,40 +23,52 @@ void makeline(int xmin, int ymin, int xmaks, int ymaks){
 }
 void garis(titik A, titik B){
 	//GARIS BRESENHAM PERCOBAAN PERTAMA
-	if(ganti==1){
-		line(A.x,A.y,B.x,B.y);
-	}
-	else{
-		if(A.y<B.y && A.x==B.x || A.x < B.y){
-		int m_new = 2 * (B.x - A.x); 
-		int slope_error_new = m_new - (B.y - A.y); 
-   		for (int x = A.x, y = A.y; y <= B.y;y++) 
-   		{ 
-  			putpixel(x,y,warna);
-      		slope_error_new += m_new; 
-      		if (slope_error_new >= 0) 
-      		{ 
-         		x++; 
-         		slope_error_new  -= 2 * (B.y - A.y); 
-      		} 
-   		} 
-	}
-	if(A.x<B.x && A.y<=B.y){
-		int m_new = 2 * (B.y - A.y); 
-		int slope_error_new = m_new - (B.x - A.x); 
-   		for (int x = A.x, y = A.y; x <= B.x; x++) 
-   		{ 
-   			putpixel(x,y,warna);
-      		slope_error_new += m_new; 
+  int w = B.x - A.x ;
+    int h = B.y - A.y ;
+    int dx1 = 0, dy1 = 0, dx2 = 0, dy2 = 0 ;
 
-      		if (slope_error_new >= 0) 
-      		{ 
-         		y++; 
-         		slope_error_new  -= 2 * (B.x - A.x); 
-      		} 
-   		} 	
-	}
-	}
+    if (w<0) 
+		dx1 = -1 ; 
+	else if (w>0)
+		dx1 = 1 ;
+		
+    if (h<0) 
+		dy1 = -1 ; 
+	else if (h>0) 
+		dy1 = 1 ;
+		
+    if (w<0) 
+		dx2 = -1 ; 
+		
+	else if (w>0) 
+		dx2 = 1 ;
+		
+    int longest = abs(w) ;
+    int shortest = abs(h) ;
+    
+    if (!(longest>shortest)) {
+        longest = abs(h) ;
+        shortest = abs(w) ;
+        if (h<0) 
+			dy2 = -1 ; 
+		else if 
+			(h>0) dy2 = 1 ;
+        dx2 = 0 ;            
+    }
+
+	int numerator = longest/2;
+    for (int i=0;i<=longest;i++) {
+        putpixel(A.x,A.y,warna) ;
+        numerator += shortest ;
+        if (!(numerator<longest)) {
+            numerator -= longest ;
+            A.x += dx1 ;
+            A.y += dy1 ;
+        } else {
+            A.x += dx2 ;
+            A.y += dy2 ;
+        }
+    }
 }
 
 void garis2(titik A, titik B){
@@ -79,6 +91,55 @@ void garis2(titik A, titik B){
         putpixel (X,Y,WHITE);
         X += Xplus;
         Y += Yplus;
+    }
+}
+
+void garis3(int x1, int y1, int x2, int y2, int warna) {
+    int w = x2 - x1 ;
+    int h = y2 - y1 ;
+    int dx1 = 0, dy1 = 0, dx2 = 0, dy2 = 0 ;
+
+    if (w<0) 
+		dx1 = -1 ; 
+	else if (w>0)
+		dx1 = 1 ;
+		
+    if (h<0) 
+		dy1 = -1 ; 
+	else if (h>0) 
+		dy1 = 1 ;
+		
+    if (w<0) 
+		dx2 = -1 ; 
+		
+	else if (w>0) 
+		dx2 = 1 ;
+		
+    int longest = abs(w) ;
+    int shortest = abs(h) ;
+    
+    if (!(longest>shortest)) {
+        longest = abs(h) ;
+        shortest = abs(w) ;
+        if (h<0) 
+			dy2 = -1 ; 
+		else if 
+			(h>0) dy2 = 1 ;
+        dx2 = 0 ;            
+    }
+
+	int numerator = longest/2;
+    for (int i=0;i<=longest;i++) {
+        putpixel(x1,y1,warna) ;
+        numerator += shortest ;
+        if (!(numerator<longest)) {
+            numerator -= longest ;
+            x1 += dx1 ;
+            y1 += dy1 ;
+        } else {
+            x1 += dx2 ;
+            y1 += dy2 ;
+        }
     }
 }
 
